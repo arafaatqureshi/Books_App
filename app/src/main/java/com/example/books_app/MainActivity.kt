@@ -18,27 +18,25 @@ class MainActivity : AppCompatActivity() {
 
         login_text.setOnClickListener {
         startActivity(Intent(this,ActivityLogin::class.java))
-
         }
 
         register_button.setOnClickListener {
 
             var ip = "http://192.168.100.149:8080/"
             var url =
-                ip +"bookselling/addusersignup.php?name="+
+                ip+"bookselling/addusersignup.php?name="+
                         name_editText.text.toString()+"&phone="+phone_editText.text.toString()+
                         "&password="+password_editText.text.toString()
                         "&city="+city_editText.text.toString()
             var rq = Volley.newRequestQueue(this)
             var str = StringRequest(Request.Method.GET, url,
                 Response.Listener { response ->
-                    if (response.equals("0")) {
-                        Toast.makeText(this, "Sorry! Duplicate phone number", Toast.LENGTH_SHORT).show()
-                    } else {
+                    if (response.equals("1")) {
                         Toast.makeText(this, "User Registered", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this,ActivityHome::class.java))
-
-
+                    }
+                    else {
+                        Toast.makeText(this, "Sorry! Duplicate phone number", Toast.LENGTH_SHORT).show()
                     }
                 }
                 , Response.ErrorListener { error ->
@@ -47,6 +45,9 @@ class MainActivity : AppCompatActivity() {
             rq.add(str)
 
         }
+
+
+
 
     }
 }

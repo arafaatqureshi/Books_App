@@ -11,6 +11,7 @@ class ActivityHome :AppCompatActivity(){
         setContentView(R.layout.home)
 
 
+
         button_sell_home.setOnClickListener {
 
             startActivity(Intent(this,ActiviySell::class.java))

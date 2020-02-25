@@ -44,7 +44,7 @@
             />
 
         <EditText
-            android:id="@+id/Book_price_editText"
+            android:id="@+id/book_price_editText"
             android:padding="10dp"
             android:background="@drawable/round_edit_text"
             android:layout_marginTop="20dp"
