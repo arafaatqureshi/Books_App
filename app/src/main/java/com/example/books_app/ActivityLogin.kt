@@ -1,5 +1,6 @@
 package com.example.books_app
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -16,6 +17,11 @@ class ActivityLogin :AppCompatActivity(){
         setContentView(R.layout.activity_login)
 
         login_button.setOnClickListener {
+            val pref= getSharedPreferences("info", Context.MODE_PRIVATE)
+            val editor= pref.edit()
+            editor.putString("phn",phone_editText_login.text.toString())
+
+
             var ip = "http://192.168.100.149:8080/"
             var url = ip+"bookselling/login.php?phone="+
             phone_editText_login.text.toString()+"&password="+password_editText_login.text.toString()
